@@ -1,21 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import BrailleToText2 from "./src/components/BrailleToText2";
+import TextToBraille from "./src/components/TextToBraille";
+import HomeScreen from "./src/components/HomeScreen"
+import About from "./src/components/About"
 
-export default function App() {
+const Stack = createStackNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home" headerMode="none">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="BrailleToText" component={BrailleToText2} />
+        <Stack.Screen name="TextToBraille" component={TextToBraille} />
+        <Stack.Screen name="About" component={About} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
